@@ -1,24 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{config("app.locale")}}">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <title>@yield('title',config('app.name'))</title>
-    <meta name="author" content="">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
+    @include('layout.partials.head')
+    @yield('head')
 </head>
 
-<body>
+<body id="commerce">
 @include('layout.partials.navbar')
-<h1>@yield('content')</h1>
+@yield('content')
+@include('layout.partials.footer')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<hr>
-@include('layout.partials.footer',['yil'=>2019])
-
-
+@yield('footer')
 </body>
 
 </html>
