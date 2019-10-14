@@ -11,4 +11,8 @@
 |
 */
 
-Route::get('/', 'AnasayfaController@index')->name('anasayfa');//Anasayfa içerisindeki index metodu çağırılacaktır.
+Route::get('/anasayfa', 'AnasayfaController@index')->name('anasayfa');//Anasayfa içerisindeki index metodu çağırılacaktır.
+Route::view('/kategori','kategori');
+Route::view('/urun','urun');
+Route::view('/sepet','sepet');
+Route::get('/', 'AnasayfaController@index');

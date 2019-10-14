@@ -1,5 +1,5 @@
 @extends('layout.master')
 @section('title','Kategori')
 @section('content')
-   Anasayfa
+ Sepet Sayfası
 @endsection
