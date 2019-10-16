@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Facade\FlareClient\Http\Exceptions\NotFound;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -46,6 +47,14 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if($exception instanceof NotFoundException)
+        {
+            return response()->view(('errors.404'),compact('exception'));
+        }
+        if($exception instanceof ModelFoundException)
+        {
+            return response()->view(('errors.404'),compact('exception'));
+        }
         return parent::render($request, $exception);
     }
 }

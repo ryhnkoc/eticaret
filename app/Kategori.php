@@ -11,7 +11,13 @@ class Kategori extends Model
     protected $table='kategori';
     //protected $fillable=['kategori_adı','slug'];
     protected  $guarded=[];//tüm kolon değerlerini istediğimiz gibi tabloya ekleyebiliriz fillable yazmamıza gerek yok
-    const CREATED_AT = 'olusturulma_tarihi';
-    const UPDATED_AT ='guncelleme_tarihi';
-    const DELETED_AT='silinme_tarihi';
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT ='updated_at';
+    const DELETED_AT='deleted_at';
+
+
+    public function urunler()
+    {
+        return $this->belongsToMany('App\Urun','kategori_urun');
+    }
 }

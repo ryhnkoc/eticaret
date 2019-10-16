@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\urun;
+use App\Kategori;
+use App\Urun;
 use Illuminate\Http\Request;
 
 class UrunController extends Controller
@@ -12,9 +13,11 @@ class UrunController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($slug_urunadi)
     {
-        //
+
+        $urun=Urun::whereSlug($slug_urunadi)->firstorFail();
+         return  view('urun',compact('urun'));
     }
 
     /**
@@ -57,7 +60,7 @@ class UrunController extends Controller
      */
     public function edit(urun $urun)
     {
-        //
+
     }
 
     /**
@@ -69,7 +72,7 @@ class UrunController extends Controller
      */
     public function update(Request $request, urun $urun)
     {
-        //
+
     }
 
     /**

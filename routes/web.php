@@ -18,6 +18,7 @@ Route::get('/sepet/','SepetController@index')->name('sepet');
 Route::get('/odeme/','OdemeController@index')->name('odeme');
 Route::get('/siparis/','SiparislerController@index')->name('siparisler');
 
+
 Route::group(['prefix'=>'kullanici'],function(){
     Route::get('/oturumac','KullaniciController@giris_form')->name('kullanici.oturumac');
     Route::get('/kaydol','KullaniciController@kaydol')->name('kullanici.kaydol');

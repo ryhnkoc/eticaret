@@ -15,12 +15,13 @@ class CreateKategoriTable extends Migration
     {
         Schema::create('kategori', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('ust_id')->nullable();
             $table->string('kategori_adi',30);
             $table->string('slug',40)->nullable();
-            $table->timestamp('olusturulma_tarihi')->default(DB::raw('CURRENT_TIMESTAMP'));
-            //$table->timestamp('guncelleme_tarihi')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
+            $table->timestamp('created_at')->nullable();;
+            $table->timestamp('updated_at')->nullable();;
            // $table->softDeletes();
-            $table->timestamp('silinme_tarihi')->nullable();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 
