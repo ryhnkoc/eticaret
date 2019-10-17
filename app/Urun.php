@@ -27,5 +27,5 @@ class Urun extends Model
     {
         return $this->hasOne('App\UrunDetay');
 
-    }
+    }//
 }
