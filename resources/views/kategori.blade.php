@@ -22,7 +22,9 @@
                             </a>
 
                             @endforeach
+
                         </div>
+
                         @else
                             Bu kategoride Başka Alt Kategori Bulunmamaktadır
 
@@ -35,8 +37,8 @@
                 <div class="products bg-content">
                     @if(count($urunler)>0)
                     Sırala
-                    <a href="#" class="btn btn-default">Çok Satanlar</a>
-                    <a href="#" class="btn btn-default">Yeni Ürünler</a>
+                    <a href="?order=coksatanlar" class="btn btn-default">Çok Satanlar</a>
+                    <a href="?order=yeni?" class="btn btn-default">Yeni Ürünler</a>
                     <hr>
                     @endif
                     <div class="row">
@@ -53,8 +55,10 @@
                                 <p><a href="#" class="btn btn-theme">Sepete Ekle</a></p>
                             </div>
                             @endforeach
+                            <br>
 
                     </div>
+                        {{request()->has('order')?$urunler->appends(['order'=>request('order')])->links():$urunler->links()}}
                 </div>
             </div>
         </div>

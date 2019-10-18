@@ -20,11 +20,20 @@ class UrunController extends Controller
          return  view('urun',compact('urun'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //Ara fonksiyonu
+    public function ara()
+    {
+        $aranan=request()->input('aranan');
+
+//        dd(Urun::get());
+        $urunler=Urun::where('urun_adi','ilike',"%$aranan%")
+        ->orWhere('aciklama','ilike',"%$aranan%")
+        ->paginate(3);//aradığımız ürünleri sayfalandırmak için kullanıyoruz
+        request()->flash();
+        return view('arama',compact('urunler'));
+    }
+
+
     public function create()
     {
         //

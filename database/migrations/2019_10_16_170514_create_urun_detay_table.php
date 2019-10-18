@@ -22,6 +22,7 @@ class CreateUrunDetayTable extends Migration
             $table->boolean('goster_cok_satan')->default(0);
             $table->boolean('goster_indirimli')->default(0);
             $table->foreign('urun_id')->references('id')->on('urun')->onDelete('cascade');
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 
