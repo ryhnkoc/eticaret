@@ -1,6 +1,7 @@
 @extends('layout.master')
 @section('title','Anasayfa')
 @section('content')
+@include('layout.partials.alert')
     <div class="container">
         <div class="row">
             <div class="col-md-3">

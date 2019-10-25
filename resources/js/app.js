@@ -5,3 +5,7 @@
  */
 
 require('./bootstrap');
+
+setTimeout(function () {
+
+},3000)

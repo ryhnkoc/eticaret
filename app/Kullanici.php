@@ -2,7 +2,7 @@
 
 namespace App;
 use Illuminate\Notifications\Notifiable;
-use Illıminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
 class Kullanici extends Authenticatable
