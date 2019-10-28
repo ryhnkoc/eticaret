@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Facade\FlareClient\Http\Exceptions\NotFound;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -57,4 +58,5 @@ class Handler extends ExceptionHandler
         }
         return parent::render($request, $exception);
     }
+
 }

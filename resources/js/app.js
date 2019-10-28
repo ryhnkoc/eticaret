@@ -5,7 +5,13 @@
  */
 
 require('./bootstrap');
-
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
 setTimeout(function () {
+$('.alert').slideUp(500)
+},3000);
 
-},3000)
+

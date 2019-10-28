@@ -27,7 +27,7 @@
                 </div>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><i class="fa fa-shopping-cart"></i> Sepet <span class="badge badge-theme">5</span></a>
+                <li><a href="{{route('sepet')}}"><i class="fa fa-shopping-cart"></i> Sepet <span class="badge badge-theme">{{Cart::count()}}</span></a>
                 </li>
                 @guest()
                     <li><a href="{{route('kullanici.oturumac')}}">Oturum Aç</a></li>
@@ -41,7 +41,15 @@
                         <ul class="dropdown-menu">
                             <li><a href="#">Siparişlerim</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Çıkış</a></li>
+
+                            <li>
+                                <a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit()">Çıkış</a>
+
+                                <form id="logout-form" action="{{route('kullanici.oturumukapat')}}" method="post" style="display:none" >
+                                   @csrf
+                                </form>
+                            </li>
+
                         </ul>
                     </li>
                 @endauth

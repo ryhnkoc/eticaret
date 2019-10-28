@@ -19240,6 +19240,15 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+setTimeout(function () {
+  $('.alert').slideUp(500);
+}, 3000);
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -19305,8 +19314,8 @@ if (token) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/vagrant/code/eticaret/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/vagrant/code/eticaret/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/reyyan/Projects/eticaret/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/reyyan/Projects/eticaret/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
