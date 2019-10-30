@@ -23,9 +23,9 @@ Route::group(['prefix'=>'sepet'],function(){
     Route::patch('/guncelle/{rowid}','SepetController@guncelle')->name('sepet.guncelle');
 });
 
-
+Route::get('/odeme/','OdemeController@index')->name('odeme');
+Route::post('/odeme','OdemeController@odemeyap')->name('odemeyap');
 Route::group(['middleware'=>'auth'],function (){
-    Route::get('/odeme/','OdemeController@index')->name('odeme');
     Route::get('/siparisler/','SiparislerController@index')->name('siparisler');
     Route::get('/siparisler/{id}','SiparislerController@detay')->name('siparis');
 });

@@ -75,7 +75,7 @@
                    <input type="submit" class="btn btn-info pull-left" value="Sepeti Boşalt">
                </form>
 
-                <a href="#" class="btn btn-success pull-right btn-lg">Ödeme Yap</a>
+                <a href="{{route('odeme')}}" class="btn btn-success pull-right btn-lg">Ödeme Yap</a>
             @else
                 <p>Sepetinizde Ürün Yoktur</p>
             @endif
@@ -87,18 +87,18 @@
     <script>
         $(function()
         {
-            $('.urun-adet-artir,.urun-adet-azalt').on('click',function(){//TODO:404 hatası alıyorum GERİDÖN
+            $('.urun-adet-artir,.urun-adet-azalt').on('click',function(){//TODO:500 hatası alıyorum GERİDÖN
 
                 var id=$(this).attr('data-id');
                 var adet=$(this).attr('data-adet');
 
                 $.ajax({
                     type:'PATCH',//gnelde patche type bir veri güncellenirken kullanılıyor
-                    url:"{{url('sepet/guncelle')}}" + id,
+                    url:'{{url('sepet/guncelle')}}/'+ id,
                     data:{adet:adet},
-                    success:function()
+                    success:function(result)
                     {
-                        window.location.href='{{route('sepet')}}';
+                        window.location.href='/sepet';
                     }
                 });
             });

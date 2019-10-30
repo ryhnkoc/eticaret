@@ -1,46 +1,55 @@
 @extends('layout.master')
-@section('title','Sipariş Detay - '.$id)
+@section('title','Sipariş Detay ')
 @section('content')
 
     <div class="container">
+
         <div class="bg-content">
-            <h2>Sipariş (SP-00123)</h2>
+            <a href="{{route('siparisler')}}" class="btn btn-xs btn-primary">
+                <i class="glyphicon glyphicon-arrow-left"></i>Siparişlere Dön
+            </a>
+            <div></div>
+            <h2>Sipariş (SP-{{$siparis->id}})</h2>
             <table class="table table-bordererd table-hover">
                 <tr>
-                    <th>Ürün</th>
+                    <th colspan="1">Ürün</th>
                     <th>Tutar</th>
                     <th>Adet</th>
                     <th>Ara Toplam</th>
                     <th>Durum</th>
                 </tr>
                 <tr>
-                    <td> <img src="http://lorempixel.com/120/100/food/2"> Ürün adı</td>
-                    <td>18.99</td>
-                    <td>1</td>
-                    <td>18.99</td>
+                    @foreach($siparis->sepet->sepet_urunler as $sepet_urun)
+
+                    <td style="width: 120px">
+                        <a href="{{route('urun',$sepet_urun->urun->slug)}}"><img src="http://lorempixel.com/120/100/food/2"></a>
+                    </td>
+
                     <td>
-                        Sipariş alındı, <br> Onaylandı, <br> Kargoya verildi, <br> Bir sorun var. İletişime geçin!
+                        <a href="{{route('urun',$sepet_urun->urun->slug)}}">{{$sepet_urun->urun->urun_adi}}</a>
+                    </td>
+                    <td>{{$sepet_urun->fiyati}}</td>
+                    <td>{{$sepet_urun->adet}}</td>
+                    <td>{{$sepet_urun->fiyati*$sepet_urun->adet}}</td>
+                    <td>
+                        {{$sepet_urun->durum}}
                     </td>
                 </tr>
+                @endforeach
                 <tr>
+                    <th colspan="4" class="text-right">Toplam Tutar</th>
+                    <th colspan="2">{{$siparis->siparis_tutari}} ₺</th>
                     <th></th>
-                    <th></th>
-                    <th>Toplam Tutar (KDV Dahil)</th>
-                    <th>18.99</th>
+                </tr>
+
+                <tr>
+                    <th colspan="4" class="text-right">Toplam Tutar(KDV'li)</th>
+                    <th colspan="2">{{$siparis->siparis_tutari}} ₺</th>
                     <th></th>
                 </tr>
                 <tr>
-                    <th></th>
-                    <th></th>
-                    <th>Kargo</th>
-                    <th>Ücretsiz</th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <th></th>
-                    <th>Sipariş Toplamı</th>
-                    <th>18.99</th>
+                    <th colspan="4" class="text-right">Siparis Durumu</th>
+                    <th colspan="2">{{$siparis->durum}} ₺</th>
                     <th></th>
                 </tr>
 

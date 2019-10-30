@@ -84,7 +84,7 @@ class SepetController extends Controller
         //Validation işlemi
         $validator = Validator::make(request()->all(),
             [
-                'adet' => 'required|numeric|between:0-5'
+                'adet' => 'required|numeric|between:0,5'
             ]);
         if ($validator->fails()) {
             session()->flash('mesaj_tur', 'success');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Kullanici;
+use App\KullaniciDetay;
 use App\Mail\KullaniciKayitMail;
 use App\Sepet;
 use App\SepetUrun;
@@ -38,7 +39,12 @@ class KullaniciController extends Controller
            request()->session()->regenerate();//requestin session bilgisi yenileniyor ve intend edilen sayfaya yönlendiriliyor
 
            //Session-Sepet ve Veritabaı Sepet i senkronize etme
-           $aktif_sepet_id=Sepet::firstOrCreate(['kullanici_id'=>auth()->id()])->id;
+           $aktif_sepet_id=Sepet::aktif_sepet_id();
+           if(!is_null($aktif_sepet_id))
+           {//Bu İf Blogu aktif_sepet_id nin null gelmesi halinde tekrar sepet oluşturmak için oluşturuldu
+               $aktif_sepet=Sepet::create(['kullanici_id'=>auth()->id()]);
+               $aktif_sepet_id=$aktif_sepet->id;
+           }
            session()->put('aktif_sepet_id');//aktif_sepet_id bilgisini sessiona atmak için put metodunu kullanıyoruz
            if(Cart::count()>0)
            {//Bu blokta sessionda Cart kütüphanesi ile spete eklenen ürün varsa (güncelleme),veritabanında güncelleme yapacağız.
@@ -96,6 +102,9 @@ class KullaniciController extends Controller
             'aktivasyon_anahtari'=>Str::random(60),
             'aktif_mi'=>0
         ]);
+
+        //KullaniciDetay tablosu için db ye kayıt yapıyoruz
+        $kullanici->detay()->save(new KullaniciDetay());
 
         //Mail gönderme işlemini tetikleyeceğiz
         Mail::to(request('email'))->send(new KullaniciKayitMail($kullanici));

@@ -24,4 +24,9 @@ class Kullanici extends Authenticatable
         return $this->sifre;//DB deki sifre alanını password olarak görmesi daha doğrusu eşleştirmesi için gerekli  gAP override ediyoruz
     }
 
+    public function detay()
+    {
+        return $this->hasOne('App\KullaniciDetay');
+    }
+
 }
