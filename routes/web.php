@@ -10,6 +10,34 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//
+//Route::get(['prefix'=>'yonetim','namespace'=>'Yonetim'],function(){
+//    Route::get('/',function(){
+//        return "Admin";
+//    });
+//    Route::get('/oturumac','KullaniciController@oturumac')->name('yonetim.oturumac');
+////Eski kullanım
+//});
+Route::namespace('Yonetim')->prefix('yonetim')->group(function () {
+    Route::redirect('/','/yonetim/oturumac');
+    Route::get('/oturumukapat','KullaniciController@oturumukapat')->name('yonetim.oturumukapat');
+    Route::group(['middleware'=>'yonetim'],function (){
+        Route::get('/anasayfa','AnasayfaController@index')->name('yonetim.anasayfa');
+        //yonetim/kullanici
+        Route::group(['prefix'=>'kullanici'],function(){
+            Route::match(['get','post'],'/','KullaniciController@index')->name('yonetim.kullanici');
+            Route::get('/yeni','KullaniciController@form')->name('yonetim.kullanici.yeni');
+            Route::get('/duzenle/{id}','KullaniciController@form')->name('yonetim.kullanici.duzenle');
+            Route::post('/kaydet/{id}','KullaniciController@kaydet')->name('yonetim.kullanici.kaydet');
+            Route::get('sil/{id}','KullaniciController@sil')->name('yonetim.kullanici.sil');
+        });
+
+
+    });
+
+    Route::match(['get','post'],'/oturumac','KullaniciController@oturumac')->name('yonetim.oturumac');//match fonkisyonu birden fazla metod tipine göre bir sayfayı açmayı sağlıyor
+
+});
 
 Route::get('/anasayfa', 'AnasayfaController@index')->name('anasayfa');//Anasayfa içerisindeki index metodu çağırılacaktır.
 Route::get('/kategori/{slug_kategoriadi}','KategoriController@index')->name('kategori');

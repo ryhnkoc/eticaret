@@ -34,7 +34,12 @@ class KullaniciController extends Controller
                'email'=>'required|email',
                'sifre'=>'required'
            ]);
-       if(auth()->attempt(['email'=>request('email'),'password'=>request('sifre')]))
+       $credentials=[
+           'email'=>\request('email'),
+           'password'=>\request('sifre'),
+           'aktif_mi'=>true
+       ];
+       if(auth()->attempt($credentials))
        {
            request()->session()->regenerate();//requestin session bilgisi yenileniyor ve intend edilen sayfaya yönlendiriliyor
 

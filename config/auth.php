@@ -46,6 +46,10 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        'yonetim' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
     ],
 
     /*

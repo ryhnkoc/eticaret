@@ -14,3 +14,8 @@ const mix = require('laravel-mix');
 mix.sass('resources/sass/app.scss', 'public/css', {
     implementation: require('node-sass')
 }).js('resources/js/app.js', 'public/js').version();
+
+mix.copy('resources/js/admin-app.js','public/js/admin-app.js');
+mix.sass('resources/sass/admin.scss', 'public/css');
+mix.sass('resources/sass/login.scss', 'public/css');
+
