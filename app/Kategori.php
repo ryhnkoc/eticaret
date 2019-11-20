@@ -15,7 +15,11 @@ class Kategori extends Model
     const UPDATED_AT ='updated_at';
     const DELETED_AT='deleted_at';
 
+    public function ust_kategori()
+    {
+        return $this->belongsTo('App\Kategori','ust_id')->withDefault( ['kategori_adi'=>'Ana Kategori']);
 
+    }
     public function urunler()
     {
         return $this->belongsToMany('App\Urun','kategori_urun');

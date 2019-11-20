@@ -13,7 +13,7 @@ class Kullanici extends Authenticatable
 
     protected $table = 'kullanici';
     protected $fillable = [
-        'adsoyad', 'email', 'sifre', 'aktif_mi', 'aktivasyon_anahtari'
+        'adsoyad', 'email', 'sifre', 'aktif_mi', 'aktivasyon_anahtari','yonetici_mi'
     ];
 
     protected $hidden = ['sifre', 'aktivasyon_anahtari'];
@@ -26,7 +26,7 @@ class Kullanici extends Authenticatable
 
     public function detay()
     {
-        return $this->hasOne('App\KullaniciDetay');
+        return $this->hasOne('App\KullaniciDetay')->withDefault();
     }
 
 }
