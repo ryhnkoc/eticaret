@@ -13,13 +13,15 @@
             @method('POST')
             <div class="form-group">
                 <label for="search">Arama</label>
-                <input type="text" class="form-control form-control-sm" name="aranan" id="aranan" placeholder="Ara" value="{{old('aranan')}}">
+                <input type="text" class="form-control form-control-sm" name="aranan" id="aranan" placeholder="Ara"
+                       value="{{old('aranan')}}">
                 <label for="ust_id">Üst Kategoriler</label>
                 <select name="ust_id" id="ust_id" class="form-control">
                     <option value="">Seçiniz</option>
                     @foreach($ana_kategoriler as $ana_kategori)
-                        <option value="{{$ana_kategori->id}}">{{$ana_kategori->kategori_adi}}</option>
-                        @endforeach
+                        <option
+                            value="{{$ana_kategori->id}}" {{old('ust_id')==$ana_kategori->id ? 'selected':''}}>{{$ana_kategori->kategori_adi}}</option>
+                    @endforeach
                 </select>
 
             </div>
@@ -45,6 +47,12 @@
             </tr>
             </thead>
             <tbody>
+            @if(count($list)==0)
+                <tr>
+                    <td colspan="6">Kategori Bulunamadı</td>
+                </tr>
+            @endif
+
             @foreach($list as $entry)
                 <tr>
                     <td>{{$entry->id}}</td>
@@ -55,17 +63,19 @@
                     <td>
 
                     <td style="width: 100px">
-                        <a href="{{route('yonetim.kategori.duzenle',$entry->id)}}" class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top"
+                        <a href="{{route('yonetim.kategori.duzenle',$entry->id)}}" class="btn btn-xs btn-success"
+                           data-toggle="tooltip" data-placement="top"
                            title="Düzenle">
                             <span class="fa fa-pencil"></span>
                         </a>
-                        <a href="{{route('yonetim.kategori.sil',$entry->id)}}" class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top"
+                        <a href="{{route('yonetim.kategori.sil',$entry->id)}}" class="btn btn-xs btn-danger"
+                           data-toggle="tooltip" data-placement="top"
                            title="Sil" onclick="return confirm('Emin misiniz?')">
                             <span class="fa fa-trash"></span>
                         </a>
                     </td>
                 </tr>
-                @endforeach
+            @endforeach
             </tbody>
         </table>
         {{$list->links()}}
