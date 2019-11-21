@@ -11,9 +11,7 @@ class UrunDetay extends Model
     protected $table='urun_detay';
     //protected $fillable=['kategori_adı','slug'];
     protected  $guarded=[];//tüm kolon değerlerini istediğimiz gibi tabloya ekleyebiliriz fillable yazmamıza gerek yok
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT ='updated_at';
-    const DELETED_AT='deleted_at';
+
     public  $timestamps=false;//Eğer created at ve updeted at fonk kullnamka istemiyorsak model dosyamız içerisinde bunu belirtmeliyiz
 
     public function urun()
