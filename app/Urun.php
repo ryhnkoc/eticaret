@@ -15,7 +15,7 @@ class Urun extends Model
 
     public function kategoriler()
     {
-        return $this->belongsToMany('App\Kategori','kategori-urun');
+        return $this->belongsToMany('App\Kategori','kategori_urun');//ÜRüne ait kategorileri çekiyoruz
     }
     protected function bootIfNotBooted()
     {

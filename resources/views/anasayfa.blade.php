@@ -53,7 +53,8 @@
                     <div class="panel-heading">Günün Fırsatı</div>
                     <div class="panel-body">
                         <a href="{{route('urun',$urun_gunun_firsati->slug)}}">
-                            <img src="http://lorempixel.com/400/485/food/1" class="img-responsive">
+                            <img src="{{$urun_gunun_firsati->detay->urun_resim!=null? asset('uploads/urunler/'.$urun_gunun_firsati->detay->urun_resim):
+                            'http://lorempixel.com/400/400/food/1'}}" class="img-responsive" style="min-width:100%;">
                             {{$urun_gunun_firsati->urun_adi}}
                         </a>
                     </div>
@@ -69,8 +70,11 @@
                     <div class="row">
                         @foreach($urunler_one_cikan  as $one_cikan)
                         <div class="col-md-3 product">
-                            <a href="{{route('urun',$one_cikan->urun->slug)}}"><img src="http://lorempixel.com/400/400/food/1"></a>
-                            <p><a href="{{route('urun',$one_cikan->urun->slug)}}">{{$one_cikan->urun->urun_adi}}</a></p>
+                            <a href="{{route('urun',$one_cikan->urun->slug)}}">
+                                <img src="{{$one_cikan->detay->urun_resim!=null?asset('uploads/urunler/'.$one_cikan->detay->urun_resim):
+                            'http://lorempixel.com/400/400/food/1'}}" class="img-responsive" style="min-width:100%;">
+                                </a>
+                            <p><a href="{{route('urun',$one_cikan->urun->slug)}}">{{$one_cikan->urun->urun_adi}}</a></p><!--TODO:hata var-->
                             <p class="price">{{$one_cikan->urun->fiyati}}₺</p>
                         </div>
                             @endforeach

@@ -33,7 +33,7 @@
                             <input type="submit" class="btn btn-danger brn-xs" value="Sepetten Kaldır">
                         </form>
 
-                    </td> <!--// TODO:route('urun',$UrunCartItem->options)}} sor option değerini gönderemiyorum"-->
+                    </td>
 
 
                     <td>{{$UrunCartItem->price}}₺</td>
@@ -87,7 +87,7 @@
     <script>
         $(function()
         {
-            $('.urun-adet-artir,.urun-adet-azalt').on('click',function(){//TODO:500 hatası alıyorum GERİDÖN
+            $('.urun-adet-artir,.urun-adet-azalt').on('click',function(){
 
                 var id=$(this).attr('data-id');
                 var adet=$(this).attr('data-adet');

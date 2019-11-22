@@ -102,11 +102,11 @@
             </div>
         </div>
         <div class="form-group">
-            @if($entry->detay->urun_resmi!=null)
-                <img src="uploads/urunler/{{$entry->detay->urun_resmi}}" style="height:100px; margin-right:20px;" class="thumbnail pull-left">
+            @if($entry->detay->urun_resim!=null)
+                <img src="/uploads/urunler/{{$entry->detay->urun_resim}}" style="height:100px; margin-right:20px;" class="thumbnail pull-left">
             @endif
             <label for="urun_resmi">Ürün Resmi</label>
-            <input type="file" id="urun_resmi" name="urun_resmi">
+            <input type="file" id="urun_resim" name="urun_resim">
 
         </div>
     </form>
