@@ -22,7 +22,8 @@
                     @foreach($siparis->sepet->sepet_urunler as $sepet_urun)
 
                     <td style="width: 120px">
-                        <a href="{{route('urun',$sepet_urun->urun->slug)}}"><img src="http://lorempixel.com/120/100/food/2"></a>
+                        <a href="{{route('urun',$sepet_urun->urun->slug)}}"><img src="{{$sepet_urun->urun->detay->urun_resim!=null? asset('uploads/urunler/'.$sepet_urun->urun->detay->urun_resim):
+                            'http://lorempixel.com/120/100/food/1'}}" class="img-responsive" style="width:120px; height:100px"></a>
                     </td>
 
                     <td>

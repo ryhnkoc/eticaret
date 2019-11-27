@@ -30,7 +30,8 @@
 
                         @foreach($urunler_slider as $index=>$urun_detay)
                         <div class="item {{$index==0 ?'active':''}}">
-                            <img src="http://lorempixel.com/640/400/food/1" alt="...">
+                            <img src="{{$urun_detay->urun_resim!=null? asset('uploads/urunler/'.$urun_detay->urun_resim):
+                            'http://lorempixel.com/400/400/food/1'}}" class="img-responsive" style="min-width:100%;">
                             <div class="carousel-caption">
                                {{$urun_detay->urun->urun_adi}}
                             </div>
@@ -71,10 +72,10 @@
                         @foreach($urunler_one_cikan  as $one_cikan)
                         <div class="col-md-3 product">
                             <a href="{{route('urun',$one_cikan->urun->slug)}}">
-                                <img src="{{$one_cikan->detay->urun_resim!=null?asset('uploads/urunler/'.$one_cikan->detay->urun_resim):
+                                <img src="{{$one_cikan->urun_resim!=null?asset('uploads/urunler/'.$one_cikan->urun_resim):
                             'http://lorempixel.com/400/400/food/1'}}" class="img-responsive" style="min-width:100%;">
                                 </a>
-                            <p><a href="{{route('urun',$one_cikan->urun->slug)}}">{{$one_cikan->urun->urun_adi}}</a></p><!--TODO:hata var-->
+                            <p><a href="{{route('urun',$one_cikan->urun->slug)}}">{{$one_cikan->urun->urun_adi}}</a></p>
                             <p class="price">{{$one_cikan->urun->fiyati}}₺</p>
                         </div>
                             @endforeach
@@ -91,7 +92,8 @@
                     <div class="row">
                         @foreach($urunler_cok_satan as $cok_satan)
                         <div class="col-md-3 product">
-                            <a href="{{route('urun',$cok_satan->urun->slug)}}"><img src="http://lorempixel.com/400/400/food/1"></a>
+                            <a href="{{route('urun',$cok_satan->urun->slug)}}"><img src="{{$cok_satan->urun_resim!=null?asset('uploads/urunler/'.$cok_satan->urun_resim):
+                            'http://lorempixel.com/400/400/food/1'}}" class="img-responsive" style="min-width:100%;"></a>
                             <p><a href="{{route('urun',$cok_satan->urun->slug)}}">{{$cok_satan->urun->urun_adi}}</a></p>
                             <p class="price">{{$cok_satan->urun->fiyati}}₺</p>
                         </div>
@@ -109,7 +111,8 @@
 
                         @foreach($urunler_indirimli as $indirimli)
                             <div class="col-md-3 product">
-                                <a href="{{route('urun',$indirimli->urun->slug)}}"><img src="http://lorempixel.com/400/400/food/1"></a>
+                                <a href="{{route('urun',$indirimli->urun->slug)}}"><img src="{{$indirimli->urun_resim!=null?asset('uploads/urunler/'.$indirimli->urun_resim):
+                            'http://lorempixel.com/400/400/food/1'}}" class="img-responsive" style="min-width:100%;"></a>
                                 <p><a href="{{route('urun',$indirimli->urun->slug)}}">{{$indirimli->urun->urun_adi}}</a></p>
                                 <p class="price">{{$indirimli->urun->fiyati}} ₺</p>
                             </div>

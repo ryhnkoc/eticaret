@@ -26,8 +26,8 @@ class CreateSiparisTable extends Migration
 
 
             $table->string('adsoyad',50)->nullable();
-            $table->string('telefon',15)->nullable();
-            $table->string('ceptelefon',15)->nullable();
+            $table->string('telefon',20)->nullable();
+            $table->string('ceptelefon',20)->nullable();
 
         });
     }

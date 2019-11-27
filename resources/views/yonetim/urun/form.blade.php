@@ -115,12 +115,20 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet"/>
 @endsection
 @section('footer')
-
+    <script src="//cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
     <script>
         $(function () {
             $('#kategoriler').select2();
-
+            var options={
+                uiColor:'f4645f',
+                language:'tr',
+                filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+                filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+                filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+                filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+            }
+            CKEDITOR.replace('aciklama',options);
         });
     </script>
 @endsection
